@@ -4,6 +4,8 @@ Definition : Docker is a containerization platform which allow us to package app
 
 Container : Container is running instance of image which  consist of application + Dependencies .
 
+[abc =def](url)
+
                Problem without Docker
 
 “It works on my machine   but not on yours”

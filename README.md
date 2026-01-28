@@ -1,4 +1,4 @@
-What is Docker ?
+<b>What is Docker ?</b>
 
 Definition : Docker is a containerization platform which allow us to package application with all dependence into isolated environment called container.
 

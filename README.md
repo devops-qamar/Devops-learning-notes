@@ -1,5 +1,5 @@
 # Docker Notes
-Personal learning notes for Docker & Containerization
+
 
 ---
 

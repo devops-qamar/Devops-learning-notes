@@ -1,119 +1,119 @@
-What is Docker?
+# Docker Notes
+Personal learning notes for Docker & Containerization
 
-Definition:
-Docker is a containerization platform that allows us to package an application along with all its dependencies into an isolated environment called a container.
+---
 
-Container
+## What is Docker?
 
-A container is a running instance of a Docker image.
+**Definition:**  
+Docker is a containerization platform that allows us to package an application along with all its dependencies into an isolated environment called a **container**.
+
+---
+
+## Container
+
+A **container** is a running instance of a Docker image.
+
 It consists of:
+- Application
+- Dependencies
+- Required libraries
 
-Application
+---
 
-Dependencies
+## Problems Without Docker
 
-Required libraries
+- “It works on my machine but not on yours”
+- Application breaks when moving from development to production environment
 
-Problem Without Docker
+---
 
-“It works on my machine but not on yours”
+## Solution Using Docker
 
-Application breaks when moving from development to production environment
+With Docker, we package everything inside a container to ensure **consistency across all environments**.
 
-Solution Using Docker
+When an application is packaged inside a container, it can run on any system **without worrying about OS version or library conflicts**.
 
-With Docker, we package everything inside a container to ensure consistency across all environments.
+---
 
-When an application is packaged inside a container, it can run on any system without worrying about OS version or library conflicts.
+## Faster Deployments
 
-Faster Deployments
+Deployments become faster because:
+- Containers start instantly
+- Faster compared to traditional Virtual Machines (VMs)
 
-Deployments become much faster because:
+---
 
-Containers start instantly
+## Loose Coupling (Microservices)
 
-Much faster compared to traditional Virtual Machines (VMs)
+We achieve **loose coupling** by running multiple containers as **microservices**, where each service runs independently.
 
-Loose Coupling (Microservices)
+---
 
-We can achieve loose coupling by running multiple containers as microservices, where each service runs independently.
+## Docker Images
 
-Docker Images
-
-A Docker image is the blueprint of an application.
+A **Docker image** is the blueprint of an application.
 
 It contains:
+- Application code
+- Libraries
+- Dependencies
+- Versions
+- Tools required to run the application
 
-Application code
+**Key Points:**
+- Docker images are **immutable**
+- Once an image is built, it cannot be changed
+- For updates, a **new image** is created
+- Images are stored in **Docker Hub** or **private registries**
 
-Libraries
+---
 
-Dependencies
+## Docker Containers
 
-Versions
+A **Docker container** is a running instance of a Docker image.
 
-Tools required to run the application
+**Characteristics:**
+- Lightweight
+- Isolated
+- Portable
+- Provides an environment where the application runs
 
-Key Points:
+---
 
-Docker images are immutable
+## Base Image in Docker
 
-Once an image is built, it cannot be changed
+A **base image** is the starting point for building a Docker image.
 
-For updates, we create a new image
+In a Dockerfile, we inherit from a base image using the **FROM** keyword.
 
-Images are stored in Docker Hub or private registries for reuse
+**Examples:**
+- Node.js application → `node` base image
+- Python application → `python` base image
 
-Docker Containers
+Base images can be **official Docker images**.
 
-A Docker container is a running instance of a Docker image.
+---
 
-Characteristics:
+## Docker Volumes
 
-Lightweight
+Docker volumes are used as a **storage mechanism**.
 
-Isolated
+**Why we use volumes:**
+- Data persists even if the container is deleted
+- Stored separately from the container filesystem
+- Changes in the local project directory automatically reflect inside the container
 
-Portable
+---
 
-Provides an environment where the application runs
+## Docker Compose
 
-Base Image in Docker
+Docker Compose is a tool used to manage **multiple containers easily**.
 
-A base image is the starting point for building a Docker image.
+**Key Features:**
+- Uses `docker-compose.yml` file
+- Defines multiple containers/services
+- Reduces complexity of long Docker commands
+- Used for large applications (backend, database, frontend, etc.)
 
-In a Dockerfile, we inherit from a base image using the FROM keyword.
-
-Examples:
-
-Node.js application → node base image
-
-Python application → python base image
-
-Base images can be official images provided by Docker.
-
-Docker Volumes
-
-Docker volumes are used as a storage mechanism.
-
-Why we use volumes:
-
-Data persists even if the container is deleted
-
-Stored separately from the container’s filesystem
-
-Changes made in the local project directory automatically reflect inside the container
-
-Docker Compose
-
-Docker Compose is a tool used to manage multiple containers easily.
-
-Key Features:
-
-Uses a docker-compose.yml file
-
-Defines multiple services/containers
-
-Reduces complexity of long Docker commands
-
-Useful for large applications (backend, database, frontend, etc.)
+---

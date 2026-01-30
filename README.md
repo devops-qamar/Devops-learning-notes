@@ -53,21 +53,19 @@ docker build -t my-app .
 docker images
 
 # Push image to Docker Hub
-docker push <repository-name>
-3. Docker Containers
-Definition:
-Docker container is a running instance of a Docker image.
+docker push
+## 3. Docker Containers
 
-Key Points:
+**Definition:**  
+Docker container is a **running instance of a Docker image**.
 
-Isolated, lightweight, and portable environments
+**Key Points:**  
 
-The application runs inside these containers
+- **Isolated**, **lightweight**, and portable environments  
+- The application runs inside these containers  
 
-Commands:
-
-bash
-Copy code
+**Commands:**  
+```bash
 # Run a container
 docker run -p 4000:4000 my-app
 
@@ -79,6 +77,7 @@ docker stop <container-id>
 
 # Remove a container
 docker rm <container-id>
+
 4. Base Image in Docker
 Definition:
 Base image is the starting point for building a Docker image. A Dockerfile inherits from a base image using the FROM keyword.

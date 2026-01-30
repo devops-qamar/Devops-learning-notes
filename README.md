@@ -1,151 +1,119 @@
-# Docker Notes
+What is Docker?
 
----
-
-## 1. What is Docker?
-
-**Definition:**  
-Docker is a containerization platform which allows us to **package an application with all dependencies** into an isolated environment called a **container**.
-
-**Container:**  
-A container is a **running instance of an image** which consists of **application + dependencies**.
-
----
-
-### Problem without Docker
-
-- “It works on my machine, but not on yours.”  
-- “Application breaks when we move from development to production environment.”
-
-### Solution
-
-- With the help of Docker, we package everything inside a **container** to ensure consistency across all environments.  
-- When packaged in a container, the application runs on **any system** without worrying about OS version or library conflicts.
-
-### Advantages
-
-- **Faster Deployments:** Containers start instantly compared to traditional VMs.  
-- **Loose Coupling:** Multiple containers can run as **micro-services**.
-
----
-
-## 2. Docker Images
-
-**Definition:**  
-Docker image is the **blueprint of an application**. It contains:
-
-- Application code  
-- Libraries  
-- Dependencies / versions  
-- Tools used in the application  
-
-**Key Points:**  
-
-- **Immutable:** Once built, images cannot be updated. Create a new image for updates.  
-- Stored in **Docker Hub** or private registry for reuse.
-
-**Commands:**  
-```bash
-# Build a Docker image from Dockerfile
-docker build -t my-app .
-
-# List all Docker images
-docker images
-
-# Push image to Docker Hub
-docker push
-## 3. Docker Containers
-
-**Definition:**  
-Docker container is a **running instance of a Docker image**.
-
-**Key Points:**  
-
-- **Isolated**, **lightweight**, and portable environments  
-- The application runs inside these containers  
-
-**Commands:**  
-```bash
-# Run a container
-docker run -p 4000:4000 my-app
-
-# List running containers
-docker ps
-
-# Stop a container
-docker stop <container-id>
-
-# Remove a container
-docker rm <container-id>
-
-4. Base Image in Docker
 Definition:
-Base image is the starting point for building a Docker image. A Dockerfile inherits from a base image using the FROM keyword.
+Docker is a containerization platform that allows us to package an application along with all its dependencies into an isolated environment called a container.
+
+Container
+
+A container is a running instance of a Docker image.
+It consists of:
+
+Application
+
+Dependencies
+
+Required libraries
+
+Problem Without Docker
+
+“It works on my machine but not on yours”
+
+Application breaks when moving from development to production environment
+
+Solution Using Docker
+
+With Docker, we package everything inside a container to ensure consistency across all environments.
+
+When an application is packaged inside a container, it can run on any system without worrying about OS version or library conflicts.
+
+Faster Deployments
+
+Deployments become much faster because:
+
+Containers start instantly
+
+Much faster compared to traditional Virtual Machines (VMs)
+
+Loose Coupling (Microservices)
+
+We can achieve loose coupling by running multiple containers as microservices, where each service runs independently.
+
+Docker Images
+
+A Docker image is the blueprint of an application.
+
+It contains:
+
+Application code
+
+Libraries
+
+Dependencies
+
+Versions
+
+Tools required to run the application
+
+Key Points:
+
+Docker images are immutable
+
+Once an image is built, it cannot be changed
+
+For updates, we create a new image
+
+Images are stored in Docker Hub or private registries for reuse
+
+Docker Containers
+
+A Docker container is a running instance of a Docker image.
+
+Characteristics:
+
+Lightweight
+
+Isolated
+
+Portable
+
+Provides an environment where the application runs
+
+Base Image in Docker
+
+A base image is the starting point for building a Docker image.
+
+In a Dockerfile, we inherit from a base image using the FROM keyword.
 
 Examples:
 
-Node.js Application → FROM node:lts
+Node.js application → node base image
 
-Python Application → FROM python:3.11
+Python application → python base image
 
-Base images can be official/built-in.
+Base images can be official images provided by Docker.
 
-Command in Dockerfile:
+Docker Volumes
 
-dockerfile
-Copy code
-FROM node:lts
-5. Docker Volumes
-Definition:
-Docker volumes are a storage mechanism to save data outside the container.
+Docker volumes are used as a storage mechanism.
 
-Key Points:
+Why we use volumes:
 
-Data Persistence: Data remains even if the container is deleted.
+Data persists even if the container is deleted
 
-Separate Storage: Stored separately from the container's filesystem.
+Stored separately from the container’s filesystem
 
-Live Sync: Changes made in the local project directory automatically reflect inside the container.
+Changes made in the local project directory automatically reflect inside the container
 
-Command Example:
+Docker Compose
 
-bash
-Copy code
-# Mount local folder into container
-docker run -v /home/qamar/Desktop/nodeApp:/usr/src/app my-app
-6. Docker Compose
-Definition:
-Docker Compose is a tool for managing multiple containers easily using a YAML file.
+Docker Compose is a tool used to manage multiple containers easily.
 
-Key Points:
+Key Features:
 
-YAML configuration files define multiple containers
+Uses a docker-compose.yml file
 
-Reduces complexity of multiple docker run commands
+Defines multiple services/containers
 
-Used for large applications with multiple services (backend, frontend, database, etc.)
+Reduces complexity of long Docker commands
 
-Minimal Example YAML (docker-compose.yml):
-
-yaml
-Copy code
-services:
-  web:
-    build: .
-    container_name: my-container
-    ports:
-      - "4000:4000"
-  db:
-    image: mongo
-Commands:
-
-bash
-Copy code
-# Start all services defined in docker-compose.yml
-docker compose up
-
-# Stop all services
-docker compose down
-
-# View logs
-docker compose logs
+Useful for large applications (backend, database, frontend, etc.)
